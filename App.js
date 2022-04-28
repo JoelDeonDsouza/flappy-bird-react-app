@@ -22,7 +22,7 @@ export default function App() {
     }
   }, [goldBallBottom]);
 
-  console.log(goldBallBottom);
+  // console.log(goldBallBottom);
 
   return (
     <View style={styles.container}>

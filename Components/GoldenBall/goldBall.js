@@ -12,7 +12,7 @@ const GoldBall = ({ goldBallLeft, goldBallBottom }) => {
         width: ballWidth,
         height: ballHeight,
         borderRadius: 100,
-        bottom: goldBallBottom - ballHeight / 2,
+        bottom: goldBallBottom,
         left: goldBallLeft - ballWidth / 2,
       }}
     />
