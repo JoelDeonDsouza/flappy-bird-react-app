@@ -7,14 +7,16 @@ export default function App() {
   const screenWidth = Dimensions.get("screen").width;
   const screenHeight = Dimensions.get("screen").height;
   const goldBallLeft = screenWidth / 2;
-  const [goldBallBottom, setGoldBallBottom] = useState(screenHeight / 2);
+  const [goldBallBottom, setGoldBallBottom] = useState(screenHeight / 2 + 35);
   const [obstaclesLeft, setObstaclesLeft] = useState(screenWidth);
   const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(
     screenWidth + screenWidth / 2
   );
+  const [obstaclesHeightOne, setObstaclesHeightOne] = useState(0);
+  const [obstaclesHeightTwo, setObstaclesHeightTwo] = useState(0);
   const obstaclesWidth = 65;
   const obstaclesHeight = 300;
-  const gap = 190;
+  const gap = 200;
   const gravity = 3;
   let gameTimerId;
   let obstaclesLeftTimerID;
@@ -45,6 +47,7 @@ export default function App() {
       };
     } else {
       setObstaclesLeft(screenWidth);
+      setObstaclesHeightOne(-Math.random() * 100);
     }
   }, [obstaclesLeft]);
 
@@ -59,6 +62,7 @@ export default function App() {
       };
     } else {
       setObstaclesLeftTwo(screenWidth);
+      setObstaclesHeightTwo(-Math.random() * 100);
     }
   }, [obstaclesLeftTwo]);
 
@@ -68,6 +72,7 @@ export default function App() {
       <Obstacles
         color={"#B20600"}
         obstaclesHeight={obstaclesHeight}
+        randomHeight={obstaclesHeightOne}
         obstaclesWidth={obstaclesWidth}
         obstaclesLeft={obstaclesLeft}
         gap={gap}
@@ -75,6 +80,7 @@ export default function App() {
       <Obstacles
         color={"#F55353"}
         obstaclesHeight={obstaclesHeight}
+        randomHeight={obstaclesHeightTwo}
         obstaclesWidth={obstaclesWidth}
         obstaclesLeft={obstaclesLeftTwo}
         gap={gap}

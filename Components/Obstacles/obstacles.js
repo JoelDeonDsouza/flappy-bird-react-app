@@ -7,6 +7,7 @@ const Obstacles = ({
   obstaclesWidth,
   obstaclesHeight,
   gap,
+  randomHeight,
 }) => {
   return (
     <>
@@ -17,7 +18,7 @@ const Obstacles = ({
           width: obstaclesWidth,
           height: obstaclesHeight,
           left: obstaclesLeft,
-          bottom: 0 + obstaclesHeight + gap,
+          bottom: randomHeight + obstaclesHeight + gap,
         }}
       />
       <View
@@ -27,7 +28,7 @@ const Obstacles = ({
           width: obstaclesWidth,
           height: obstaclesHeight,
           left: obstaclesLeft,
-          bottom: 0,
+          bottom: randomHeight,
         }}
       />
     </>
