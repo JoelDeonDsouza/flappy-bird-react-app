@@ -66,6 +66,29 @@ export default function App() {
     }
   }, [obstaclesLeftTwo]);
 
+  //check for hit//
+  useEffect(() => {
+    if (
+      goldBallBottom < obstaclesHeightOne + obstaclesHeight + 30 ||
+      (goldBallBottom > obstaclesHeightOne + obstaclesHeight + gap - 30 &&
+        obstaclesLeft > screenWidth / 2 - 30 &&
+        obstaclesLeft < screenWidth / 2 + 30) ||
+      goldBallBottom < obstaclesHeightOne + obstaclesHeight + 30 ||
+      (goldBallBottom > obstaclesHeightTwo + obstaclesHeight + gap - 30 &&
+        obstaclesLeftTwo > screenWidth / 2 - 30 &&
+        obstaclesLeftTwo < screenWidth / 2 + 30)
+    ) {
+      console.log("Game over");
+      gameOver();
+    }
+  });
+
+  const gameOver = () => {
+    clearInterval(gameTimerId);
+    clearInterval(obstaclesLeftTimerID);
+    clearInterval(obstaclesLeftTimerIDTwo);
+  };
+
   return (
     <View style={styles.container}>
       <GoldBall goldBallBottom={goldBallBottom} goldBallLeft={goldBallLeft} />
