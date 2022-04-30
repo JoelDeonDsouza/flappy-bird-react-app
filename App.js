@@ -9,12 +9,16 @@ export default function App() {
   const goldBallLeft = screenWidth / 2;
   const [goldBallBottom, setGoldBallBottom] = useState(screenHeight / 2);
   const [obstaclesLeft, setObstaclesLeft] = useState(screenWidth);
+  const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(
+    screenWidth + screenWidth / 2
+  );
   const obstaclesWidth = 65;
   const obstaclesHeight = 300;
   const gap = 190;
   const gravity = 3;
   let gameTimerId;
   let obstaclesLeftTimerID;
+  let obstaclesLeftTimerIDTwo;
 
   //GoldenBall movement
   useEffect(() => {
@@ -44,13 +48,35 @@ export default function App() {
     }
   }, [obstaclesLeft]);
 
+  //Another Obstacle
+  useEffect(() => {
+    if (obstaclesLeftTwo > -obstaclesWidth) {
+      obstaclesLeftTimerIDTwo = setInterval(() => {
+        setObstaclesLeftTwo((obstaclesLeftTwo) => obstaclesLeftTwo - 6);
+      }, 36);
+      return () => {
+        clearInterval(obstaclesLeftTimerIDTwo);
+      };
+    } else {
+      setObstaclesLeftTwo(screenWidth);
+    }
+  }, [obstaclesLeftTwo]);
+
   return (
     <View style={styles.container}>
       <GoldBall goldBallBottom={goldBallBottom} goldBallLeft={goldBallLeft} />
       <Obstacles
+        color={"#B20600"}
         obstaclesHeight={obstaclesHeight}
         obstaclesWidth={obstaclesWidth}
         obstaclesLeft={obstaclesLeft}
+        gap={gap}
+      />
+      <Obstacles
+        color={"#F8CB2E"}
+        obstaclesHeight={obstaclesHeight}
+        obstaclesWidth={obstaclesWidth}
+        obstaclesLeft={obstaclesLeftTwo}
         gap={gap}
       />
     </View>
