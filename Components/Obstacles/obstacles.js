@@ -1,13 +1,19 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Obstacles = ({ obstaclesLeft, obstaclesWidth, obstaclesHeight, gap }) => {
+const Obstacles = ({
+  color,
+  obstaclesLeft,
+  obstaclesWidth,
+  obstaclesHeight,
+  gap,
+}) => {
   return (
     <>
       <View
         style={{
           position: "absolute",
-          backgroundColor: "#B20600",
+          backgroundColor: color,
           width: obstaclesWidth,
           height: obstaclesHeight,
           left: obstaclesLeft,
@@ -17,7 +23,7 @@ const Obstacles = ({ obstaclesLeft, obstaclesWidth, obstaclesHeight, gap }) => {
       <View
         style={{
           position: "absolute",
-          backgroundColor: "#B20600",
+          backgroundColor: color,
           width: obstaclesWidth,
           height: obstaclesHeight,
           left: obstaclesLeft,

@@ -73,7 +73,7 @@ export default function App() {
         gap={gap}
       />
       <Obstacles
-        color={"#F8CB2E"}
+        color={"#F55353"}
         obstaclesHeight={obstaclesHeight}
         obstaclesWidth={obstaclesWidth}
         obstaclesLeft={obstaclesLeftTwo}
