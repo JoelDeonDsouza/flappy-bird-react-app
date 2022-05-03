@@ -46,7 +46,7 @@ export default function App() {
   const jump = () => {
     if (!isGameOver && goldBallBottom < screenHeight) {
       setGoldBallBottom((goldBallBottom) => goldBallBottom + 55);
-      console.log("jumped");
+      // console.log("jumped");
     }
   };
 
@@ -92,7 +92,7 @@ export default function App() {
         obstaclesLeftTwo > screenWidth / 2 - 30 &&
         obstaclesLeftTwo < screenWidth / 2 + 30)
     ) {
-      console.log("Game over");
+      // console.log("Game over");
       gameOver();
     }
   });
