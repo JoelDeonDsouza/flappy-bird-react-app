@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+} from "react-native";
 import GoldBall from "./Components/GoldenBall/goldBall";
 import Obstacles from "./Components/Obstacles/obstacles";
 
@@ -14,6 +19,7 @@ export default function App() {
   );
   const [obstaclesHeightOne, setObstaclesHeightOne] = useState(0);
   const [obstaclesHeightTwo, setObstaclesHeightTwo] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
   const obstaclesWidth = 65;
   const obstaclesHeight = 300;
   const gap = 200;
@@ -35,6 +41,14 @@ export default function App() {
   }, [goldBallBottom]);
 
   // console.log(goldBallBottom);
+
+  //Jump//
+  const jump = () => {
+    if (!isGameOver && goldBallBottom < screenHeight) {
+      setGoldBallBottom((goldBallBottom) => goldBallBottom + 55);
+      console.log("jumped");
+    }
+  };
 
   //Begin obstacles
   useEffect(() => {
@@ -87,28 +101,31 @@ export default function App() {
     clearInterval(gameTimerId);
     clearInterval(obstaclesLeftTimerID);
     clearInterval(obstaclesLeftTimerIDTwo);
+    setIsGameOver(true);
   };
 
   return (
-    <View style={styles.container}>
-      <GoldBall goldBallBottom={goldBallBottom} goldBallLeft={goldBallLeft} />
-      <Obstacles
-        color={"#B20600"}
-        obstaclesHeight={obstaclesHeight}
-        randomHeight={obstaclesHeightOne}
-        obstaclesWidth={obstaclesWidth}
-        obstaclesLeft={obstaclesLeft}
-        gap={gap}
-      />
-      <Obstacles
-        color={"#F55353"}
-        obstaclesHeight={obstaclesHeight}
-        randomHeight={obstaclesHeightTwo}
-        obstaclesWidth={obstaclesWidth}
-        obstaclesLeft={obstaclesLeftTwo}
-        gap={gap}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={jump}>
+      <View style={styles.container}>
+        <GoldBall goldBallBottom={goldBallBottom} goldBallLeft={goldBallLeft} />
+        <Obstacles
+          color={"#B20600"}
+          obstaclesHeight={obstaclesHeight}
+          randomHeight={obstaclesHeightOne}
+          obstaclesWidth={obstaclesWidth}
+          obstaclesLeft={obstaclesLeft}
+          gap={gap}
+        />
+        <Obstacles
+          color={"#F55353"}
+          obstaclesHeight={obstaclesHeight}
+          randomHeight={obstaclesHeightTwo}
+          obstaclesWidth={obstaclesWidth}
+          obstaclesLeft={obstaclesLeftTwo}
+          gap={gap}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
