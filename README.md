@@ -27,12 +27,14 @@ Install dependencies
 
 ```bash
   npm install 
+  yarn install
 ```
 
 Start the React-App
 
 ```bash
   npm start
+  yarn start
 ```
 
 ## Features
